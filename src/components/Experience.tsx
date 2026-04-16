@@ -7,8 +7,8 @@ export default function Experience() {
   const { ref, isVisible } = useScrollReveal();
 
   return (
-    <section id="experience" className="relative py-24 sm:py-32" ref={ref}>
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="experience" className="relative py-24 sm:py-32 overflow-hidden" ref={ref}>
+      <div className="max-w-5xl mx-auto px-5 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}

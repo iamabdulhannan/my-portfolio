@@ -42,8 +42,8 @@ export default function Contact() {
   return (
     <section id="contact" className="relative py-24 sm:py-32" ref={ref}>
       {/* Background gradient */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/5 rounded-full blur-[150px]" />
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80vw] max-w-[800px] h-[400px] bg-primary/5 rounded-full blur-[150px]" />
       </div>
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

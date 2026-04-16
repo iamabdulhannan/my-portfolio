@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { personalInfo, stats } from "@/data/portfolio";
 
@@ -38,64 +38,54 @@ function TypingEffect({ words }: { words: string[] }) {
   );
 }
 
-// Pre-computed static particle positions (no Math.random on every render)
+// Static particles with fully percentage-based positions — hidden on mobile via CSS
 const PARTICLES = [
-  { id: 0, delay: 0.2, xPct: 5, y: 220 },
-  { id: 1, delay: 1.8, xPct: 12, y: 380 },
-  { id: 2, delay: 3.1, xPct: 20, y: 500 },
-  { id: 3, delay: 0.7, xPct: 28, y: 260 },
-  { id: 4, delay: 2.4, xPct: 35, y: 440 },
-  { id: 5, delay: 1.1, xPct: 42, y: 320 },
-  { id: 6, delay: 3.6, xPct: 50, y: 540 },
-  { id: 7, delay: 0.4, xPct: 58, y: 280 },
-  { id: 8, delay: 2.9, xPct: 65, y: 460 },
-  { id: 9, delay: 1.5, xPct: 72, y: 350 },
-  { id: 10, delay: 3.3, xPct: 80, y: 520 },
-  { id: 11, delay: 0.9, xPct: 88, y: 240 },
-  { id: 12, delay: 2.1, xPct: 95, y: 400 },
+  { id: 0, delay: 0.2, left: "8%", top: "20%" },
+  { id: 1, delay: 1.8, left: "15%", top: "55%" },
+  { id: 2, delay: 3.1, left: "25%", top: "75%" },
+  { id: 3, delay: 0.7, left: "35%", top: "30%" },
+  { id: 4, delay: 2.4, left: "50%", top: "65%" },
+  { id: 5, delay: 1.1, left: "65%", top: "25%" },
+  { id: 6, delay: 3.6, left: "75%", top: "70%" },
+  { id: 7, delay: 0.4, left: "85%", top: "40%" },
+  { id: 8, delay: 2.9, left: "92%", top: "60%" },
 ];
-
-function FloatingParticle({ delay, xPct, y }: { delay: number; xPct: number; y: number }) {
-  return (
-    <motion.div
-      className="absolute w-1 h-1 rounded-full bg-primary/30"
-      style={{ left: `${xPct}%`, top: y }}
-      initial={{ opacity: 0 }}
-      animate={{
-        y: [0, -100, 0],
-        opacity: [0, 0.8, 0],
-        scale: [0, 1.5, 0],
-      }}
-      transition={{
-        duration: 4,
-        delay,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-    />
-  );
-}
 
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background gradient orbs */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[120px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-pink-500/3 rounded-full blur-[150px]" />
+        <div className="absolute top-1/4 left-1/4 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-primary/5 rounded-full blur-[100px] sm:blur-[120px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bg-accent/5 rounded-full blur-[100px] sm:blur-[120px]" />
       </div>
 
-      {/* Floating particles — static data, no re-render loops */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      {/* Floating particles — hidden on mobile, percentage-based positions */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block">
         {PARTICLES.map((p) => (
-          <FloatingParticle key={p.id} delay={p.delay} xPct={p.xPct} y={p.y} />
+          <motion.div
+            key={p.id}
+            className="absolute w-1 h-1 rounded-full bg-primary/20"
+            style={{ left: p.left, top: p.top }}
+            initial={{ opacity: 0 }}
+            animate={{
+              y: [0, -60, 0],
+              opacity: [0, 0.6, 0],
+              scale: [0, 1.5, 0],
+            }}
+            transition={{
+              duration: 5,
+              delay: p.delay,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
         ))}
       </div>
 
       {/* Grid pattern */}
       <div
-        className="absolute inset-0 opacity-[0.02]"
+        className="absolute inset-0 opacity-[0.015]"
         style={{
           backgroundImage:
             "linear-gradient(rgba(88,166,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(88,166,255,0.3) 1px, transparent 1px)",
@@ -103,32 +93,32 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-32">
-        <div className="text-center">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-24 sm:py-32">
+        <div className="flex flex-col items-center text-center">
           {/* Status badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6 sm:mb-8"
           >
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500" />
             </span>
-            <span className="text-sm text-dark-200">
+            <span className="text-xs sm:text-sm text-dark-200">
               Available for exciting opportunities
             </span>
           </motion.div>
 
-          {/* Profile image */}
+          {/* Profile image — explicitly centered */}
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
-            className="relative inline-block mb-8"
+            className="mb-6 sm:mb-8"
           >
-            <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-gradient p-[3px] mx-auto animate-pulse-glow">
+            <div className="w-28 h-28 sm:w-36 sm:h-36 lg:w-40 lg:h-40 rounded-full overflow-hidden border-gradient p-[3px] animate-pulse-glow">
               <div className="w-full h-full rounded-full overflow-hidden bg-dark-700">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -145,7 +135,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white mb-4 tracking-tight"
+            className="text-3xl sm:text-5xl lg:text-7xl font-bold text-white mb-3 sm:mb-4 tracking-tight"
           >
             {personalInfo.name}
           </motion.h1>
@@ -155,7 +145,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl sm:text-2xl lg:text-3xl font-medium mb-6 min-h-[2.5rem]"
+            className="text-lg sm:text-2xl lg:text-3xl font-medium mb-4 sm:mb-6 min-h-[1.8rem] sm:min-h-[2.5rem]"
           >
             <TypingEffect words={personalInfo.roles} />
           </motion.div>
@@ -165,7 +155,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-dark-200 text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed"
+            className="text-dark-200 text-sm sm:text-base lg:text-lg max-w-xl lg:max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed px-2"
           >
             {personalInfo.bio}
           </motion.p>
@@ -175,18 +165,18 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center w-full sm:w-auto mb-12 sm:mb-16"
           >
             <a
               href="#projects"
-              className="group relative px-8 py-3.5 rounded-full bg-primary text-dark-900 font-semibold text-base overflow-hidden transition-all hover:shadow-lg hover:shadow-primary/25"
+              className="group relative px-8 py-3 sm:py-3.5 rounded-full bg-primary text-dark-900 font-semibold text-sm sm:text-base overflow-hidden transition-all hover:shadow-lg hover:shadow-primary/25 text-center"
             >
               <span className="relative z-10">View My Work</span>
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
             </a>
             <a
               href="#contact"
-              className="px-8 py-3.5 rounded-full border border-dark-400 text-dark-100 font-semibold text-base hover:border-primary/50 hover:text-primary transition-all"
+              className="px-8 py-3 sm:py-3.5 rounded-full border border-dark-400 text-dark-100 font-semibold text-sm sm:text-base hover:border-primary/50 hover:text-primary transition-all text-center"
             >
               Get In Touch
             </a>
@@ -197,7 +187,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-3xl mx-auto"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 w-full max-w-sm sm:max-w-xl lg:max-w-3xl"
           >
             {stats.map((stat, i) => (
               <motion.div
@@ -205,13 +195,13 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 1.2 + i * 0.1 }}
-                className="glass rounded-2xl p-4 sm:p-5 glow-hover"
+                className="glass rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-5 glow-hover"
               >
-                <div className="text-2xl mb-1">{stat.icon}</div>
-                <div className="text-2xl sm:text-3xl font-bold text-white">
+                <div className="text-xl sm:text-2xl mb-1">{stat.icon}</div>
+                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-white">
                   {stat.value}
                 </div>
-                <div className="text-xs sm:text-sm text-dark-200">
+                <div className="text-[0.65rem] sm:text-xs lg:text-sm text-dark-200">
                   {stat.label}
                 </div>
               </motion.div>
@@ -220,15 +210,8 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator — fixed to viewport bottom, not document bottom */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
-        className="fixed bottom-8 left-1/2 -translate-x-1/2 z-20"
-      >
-        <ScrollIndicator />
-      </motion.div>
+      {/* Scroll indicator — fixed to viewport bottom, hides on scroll */}
+      <ScrollIndicator />
     </section>
   );
 }
@@ -248,11 +231,18 @@ function ScrollIndicator() {
 
   return (
     <motion.div
-      animate={{ y: [0, 10, 0] }}
-      transition={{ duration: 2, repeat: Infinity }}
-      className="w-6 h-10 rounded-full border-2 border-dark-400 flex justify-center pt-2"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 2 }}
+      className="fixed bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-20"
     >
-      <motion.div className="w-1.5 h-1.5 rounded-full bg-primary" />
+      <motion.div
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+        className="w-5 h-8 sm:w-6 sm:h-10 rounded-full border-2 border-dark-400 flex justify-center pt-1.5 sm:pt-2"
+      >
+        <motion.div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-primary" />
+      </motion.div>
     </motion.div>
   );
 }
