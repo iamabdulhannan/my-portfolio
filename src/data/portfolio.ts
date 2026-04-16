@@ -103,38 +103,6 @@ export const projects: Project[] = [
     category: "creative",
   },
   {
-    id: "baxter",
-    title: "Baxter (Tasker)",
-    tagline: "Influencer Marketplace Platform",
-    description:
-      "A full-featured influencer marketplace with portfolio-building, social media integration, drag-and-drop website builder, and e-commerce capabilities.",
-    longDescription:
-      "An enterprise-grade influencer management platform with 150+ React components. Features social feed aggregation from Twitter, Instagram, TikTok & YouTube, a drag-and-drop website builder with custom domains, built-in e-commerce with Stripe payments, and comprehensive analytics dashboards.",
-    tech: [
-      "Next.js",
-      "React 18",
-      "Redux",
-      "GraphQL",
-      "Apollo Client",
-      "Styled Components",
-      "Algolia",
-      "Stripe",
-      "Intercom",
-    ],
-    highlights: [
-      "150+ React components at enterprise scale",
-      "Drag-and-drop website builder with custom domains",
-      "Social feed aggregation: Twitter, Instagram, TikTok, YouTube",
-      "E-commerce with Stripe payments & affiliate tracking",
-      "Algolia-powered search across influencer profiles",
-      "Real-time analytics dashboards and payout management",
-    ],
-    color: "#7C3AED",
-    gradient: "from-purple-500 to-pink-400",
-    icon: "👤",
-    category: "saas",
-  },
-  {
     id: "apex",
     title: "Apex DMS",
     tagline: "Enterprise Document Management",

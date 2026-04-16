@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { personalInfo, stats } from "@/data/portfolio";
 
@@ -38,13 +38,31 @@ function TypingEffect({ words }: { words: string[] }) {
   );
 }
 
-function FloatingParticle({ delay, x, y }: { delay: number; x: number; y: number }) {
+// Pre-computed static particle positions (no Math.random on every render)
+const PARTICLES = [
+  { id: 0, delay: 0.2, xPct: 5, y: 220 },
+  { id: 1, delay: 1.8, xPct: 12, y: 380 },
+  { id: 2, delay: 3.1, xPct: 20, y: 500 },
+  { id: 3, delay: 0.7, xPct: 28, y: 260 },
+  { id: 4, delay: 2.4, xPct: 35, y: 440 },
+  { id: 5, delay: 1.1, xPct: 42, y: 320 },
+  { id: 6, delay: 3.6, xPct: 50, y: 540 },
+  { id: 7, delay: 0.4, xPct: 58, y: 280 },
+  { id: 8, delay: 2.9, xPct: 65, y: 460 },
+  { id: 9, delay: 1.5, xPct: 72, y: 350 },
+  { id: 10, delay: 3.3, xPct: 80, y: 520 },
+  { id: 11, delay: 0.9, xPct: 88, y: 240 },
+  { id: 12, delay: 2.1, xPct: 95, y: 400 },
+];
+
+function FloatingParticle({ delay, xPct, y }: { delay: number; xPct: number; y: number }) {
   return (
     <motion.div
       className="absolute w-1 h-1 rounded-full bg-primary/30"
-      initial={{ x, y, opacity: 0 }}
+      style={{ left: `${xPct}%`, top: y }}
+      initial={{ opacity: 0 }}
       animate={{
-        y: [y, y - 100, y],
+        y: [0, -100, 0],
         opacity: [0, 0.8, 0],
         scale: [0, 1.5, 0],
       }}
@@ -59,13 +77,6 @@ function FloatingParticle({ delay, x, y }: { delay: number; x: number; y: number
 }
 
 export default function Hero() {
-  const particles = Array.from({ length: 20 }, (_, i) => ({
-    id: i,
-    delay: Math.random() * 4,
-    x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1200),
-    y: Math.random() * 600 + 200,
-  }));
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background gradient orbs */}
@@ -75,10 +86,10 @@ export default function Hero() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-pink-500/3 rounded-full blur-[150px]" />
       </div>
 
-      {/* Floating particles */}
+      {/* Floating particles — static data, no re-render loops */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {particles.map((p) => (
-          <FloatingParticle key={p.id} delay={p.delay} x={p.x} y={p.y} />
+        {PARTICLES.map((p) => (
+          <FloatingParticle key={p.id} delay={p.delay} xPct={p.xPct} y={p.y} />
         ))}
       </div>
 
@@ -119,10 +130,9 @@ export default function Hero() {
           >
             <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-gradient p-[3px] mx-auto animate-pulse-glow">
               <div className="w-full h-full rounded-full overflow-hidden bg-dark-700">
-                {/* Replace /images/profile.svg with your actual photo */}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/profile.svg"
+                  src="/images/profile.png"
                   alt="Abdul Hannan"
                   className="w-full h-full object-cover"
                 />
@@ -210,21 +220,39 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator — fixed to viewport bottom, not document bottom */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="fixed bottom-8 left-1/2 -translate-x-1/2 z-20"
       >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="w-6 h-10 rounded-full border-2 border-dark-400 flex justify-center pt-2"
-        >
-          <motion.div className="w-1.5 h-1.5 rounded-full bg-primary" />
-        </motion.div>
+        <ScrollIndicator />
       </motion.div>
     </section>
+  );
+}
+
+function ScrollIndicator() {
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setVisible(window.scrollY < 100);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  if (!visible) return null;
+
+  return (
+    <motion.div
+      animate={{ y: [0, 10, 0] }}
+      transition={{ duration: 2, repeat: Infinity }}
+      className="w-6 h-10 rounded-full border-2 border-dark-400 flex justify-center pt-2"
+    >
+      <motion.div className="w-1.5 h-1.5 rounded-full bg-primary" />
+    </motion.div>
   );
 }
