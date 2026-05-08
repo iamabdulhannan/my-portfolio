@@ -1,17 +1,36 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Archivo, Space_Grotesk, JetBrains_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
+import CommandPaletteProvider from "@/components/CommandPaletteProvider";
+import ScrollProgress from "@/components/ScrollProgress";
+import CursorSpotlight from "@/components/CursorSpotlight";
 
-const inter = Inter({
-  variable: "--font-inter",
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
   display: "swap",
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+});
+
+const space = Space_Grotesk({
+  variable: "--font-space",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 const jetbrains = JetBrains_Mono({
   variable: "--font-jetbrains",
   subsets: ["latin"],
   display: "swap",
+});
+
+const instrument = Instrument_Serif({
+  variable: "--font-instrument",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -47,9 +66,18 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jetbrains.variable} h-full antialiased`}
+      className={`${archivo.variable} ${space.variable} ${jetbrains.variable} ${instrument.variable} h-full antialiased`}
+      style={{ overflowX: "clip" }}
     >
-      <body className="min-h-full flex flex-col noise-bg">{children}</body>
+      <body
+        id="top"
+        className="min-h-full flex flex-col noise-bg selection:bg-primary/30 selection:text-white"
+        style={{ overflowX: "clip" }}
+      >
+        <CursorSpotlight />
+        <ScrollProgress />
+        <CommandPaletteProvider>{children}</CommandPaletteProvider>
+      </body>
     </html>
   );
 }

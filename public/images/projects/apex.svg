@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="ab" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#06140e"/>
+      <stop offset="1" stop-color="#0a1f17"/>
+    </linearGradient>
+    <radialGradient id="aglow" cx="0.7" cy="0.3" r="0.6">
+      <stop offset="0" stop-color="#10B981" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#10B981" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="agrid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="#fff" stroke-opacity="0.04"/>
+    </pattern>
+  </defs>
+  <rect width="1440" height="900" fill="url(#ab)"/>
+  <rect width="1440" height="900" fill="url(#agrid)"/>
+  <rect width="1440" height="900" fill="url(#aglow)"/>
+
+  <!-- Logo -->
+  <g transform="translate(70 60)">
+    <rect width="36" height="36" rx="10" fill="#10B981"/>
+    <text x="46" y="26" font-family="Archivo, Inter, sans-serif" font-weight="800" font-size="22" fill="#fff">Apex DMS</text>
+  </g>
+
+  <text x="70" y="220" font-family="Archivo, Inter, sans-serif" font-weight="800" font-size="72" fill="#ffffff" letter-spacing="-3">Documents,</text>
+  <text x="70" y="300" font-family="Archivo, Inter, sans-serif" font-weight="800" font-size="72" fill="#10B981" letter-spacing="-3">orchestrated.</text>
+  <text x="70" y="346" font-family="Space Grotesk, monospace" font-size="18" fill="#a1a1aa">Multi-workspace · role-based access · PDF generation · rich text · multi-format I/O</text>
+
+  <!-- App mock: sidebar + canvas -->
+  <g transform="translate(70 420)">
+    <rect width="1300" height="380" rx="22" fill="#0a1410" stroke="#1f3a2c" stroke-width="1"/>
+
+    <!-- sidebar -->
+    <rect x="0" y="0" width="280" height="380" rx="22" fill="#091912"/>
+    <text x="24" y="40" font-family="Space Grotesk, monospace" font-size="11" fill="#52a380" letter-spacing="2">WORKSPACE</text>
+    <text x="24" y="70" font-family="Archivo, Inter, sans-serif" font-weight="700" font-size="16" fill="#fff">Acme · Compliance</text>
+
+    <g font-family="Space Grotesk, monospace" font-size="13" fill="#9ca3af">
+      <rect x="14" y="100" width="252" height="38" rx="10" fill="#10B981" fill-opacity="0.18"/>
+      <text x="30" y="124" fill="#10B981">▸ Standard Operating Procedures</text>
+      <text x="30" y="166" fill="#cbd5d1">▸ Quality Manual v3.2</text>
+      <text x="30" y="208" fill="#cbd5d1">▸ Audit Reports / 2026</text>
+      <text x="30" y="250" fill="#cbd5d1">▸ Vendor Agreements</text>
+      <text x="30" y="292" fill="#cbd5d1">▸ Training Modules</text>
+      <text x="30" y="334" fill="#9ca3af" fill-opacity="0.6">+ New document</text>
+    </g>
+
+    <!-- canvas -->
+    <g transform="translate(280 0)">
+      <rect width="1020" height="380" fill="transparent"/>
+      <rect x="32" y="28" width="180" height="22" rx="11" fill="#10B981" fill-opacity="0.12"/>
+      <text x="48" y="44" font-family="Space Grotesk, monospace" font-size="11" fill="#10B981" letter-spacing="2">SOP · CHAPTER 4 · DRAFT</text>
+
+      <text x="32" y="100" font-family="Archivo, Inter, sans-serif" font-weight="800" font-size="32" fill="#ffffff">Incoming Goods Inspection Procedure</text>
+
+      <g font-family="Space Grotesk, monospace" font-size="13" fill="#cbd5d1">
+        <rect x="32" y="130" width="940" height="6" rx="3" fill="#1f3a2c"/>
+        <rect x="32" y="148" width="900" height="6" rx="3" fill="#1f3a2c"/>
+        <rect x="32" y="166" width="780" height="6" rx="3" fill="#1f3a2c"/>
+        <rect x="32" y="200" width="220" height="20" rx="6" fill="#10B981" fill-opacity="0.14"/>
+        <text x="46" y="214" fill="#10B981">4.1 Receiving</text>
+        <rect x="32" y="232" width="940" height="6" rx="3" fill="#1f3a2c"/>
+        <rect x="32" y="250" width="850" height="6" rx="3" fill="#1f3a2c"/>
+        <rect x="32" y="268" width="730" height="6" rx="3" fill="#1f3a2c"/>
+        <rect x="32" y="298" width="220" height="20" rx="6" fill="#10B981" fill-opacity="0.14"/>
+        <text x="46" y="312" fill="#10B981">4.2 Inspection</text>
+        <rect x="32" y="330" width="940" height="6" rx="3" fill="#1f3a2c"/>
+      </g>
+
+      <!-- right toolbar -->
+      <g transform="translate(900 28)">
+        <rect width="86" height="28" rx="14" fill="#10B981"/>
+        <text x="43" y="19" text-anchor="middle" font-family="Space Grotesk, monospace" font-size="12" fill="#0a0a0a" font-weight="700">Export PDF</text>
+      </g>
+    </g>
+  </g>
+</svg>

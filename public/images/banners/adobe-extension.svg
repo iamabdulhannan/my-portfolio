@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a0f0a"/>
+      <stop offset="1" stop-color="#3a0f0f"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.7">
+      <stop offset="0" stop-color="#ff6b35" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#ff6b35" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <rect width="1280" height="720" fill="url(#glow)"/>
+  <g transform="translate(540 220)">
+    <rect x="0" y="0" width="200" height="240" rx="36" fill="#ff3b00" opacity="0.95"/>
+    <text x="100" y="170" text-anchor="middle" font-family="Archivo, Inter, sans-serif" font-weight="900" font-size="160" fill="#fff">Ai</text>
+  </g>
+  <text x="640" y="540" text-anchor="middle" font-family="Archivo, Inter, sans-serif" font-weight="800" font-size="56" fill="#ffffff">Lifecycle PLM Extension</text>
+  <text x="640" y="590" text-anchor="middle" font-family="Space Grotesk, monospace" font-size="22" fill="#fca58c" letter-spacing="3">ADOBE ILLUSTRATOR · CEP · EXTENDSCRIPT</text>
+</svg>

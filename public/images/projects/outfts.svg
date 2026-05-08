@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="og" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fafafa"/>
+      <stop offset="1" stop-color="#e7e5e4"/>
+    </linearGradient>
+    <radialGradient id="oOrb1" cx="0.2" cy="0.2" r="0.5">
+      <stop offset="0" stop-color="#fbcfe8" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#fbcfe8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="oOrb2" cx="0.85" cy="0.85" r="0.5">
+      <stop offset="0" stop-color="#dbeafe" stop-opacity="0.7"/>
+      <stop offset="1" stop-color="#dbeafe" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1440" height="900" fill="url(#og)"/>
+  <rect width="1440" height="900" fill="url(#oOrb1)"/>
+  <rect width="1440" height="900" fill="url(#oOrb2)"/>
+
+  <!-- Big OUTFTS logo, centered -->
+  <g transform="translate(720 450)" text-anchor="middle" font-family="Archivo, Inter, sans-serif" font-weight="900">
+    <text y="-30" font-size="280" fill="#0a0a0a" letter-spacing="-12">OUT</text>
+    <text y="200" font-size="280" fill="#0a0a0a" letter-spacing="-12">FTS</text>
+  </g>
+
+  <!-- corner caption -->
+  <text x="70" y="68" font-family="Space Grotesk, monospace" font-size="12" fill="#0a0a0a" letter-spacing="3">SOCIAL · COMMERCE · FASHION</text>
+  <text x="1370" y="68" text-anchor="end" font-family="Space Grotesk, monospace" font-size="12" fill="#0a0a0a" letter-spacing="3">www.outfts.com</text>
+
+  <!-- bottom row of mock product chips -->
+  <g transform="translate(0 800)">
+    <g transform="translate(140 0)">
+      <rect width="200" height="60" rx="30" fill="#0a0a0a"/>
+      <text x="100" y="38" text-anchor="middle" font-family="Space Grotesk, monospace" font-size="14" fill="#fafafa">Stripe Payments</text>
+    </g>
+    <g transform="translate(370 0)">
+      <rect width="160" height="60" rx="30" fill="#fff" stroke="#0a0a0a" stroke-width="2"/>
+      <text x="80" y="38" text-anchor="middle" font-family="Space Grotesk, monospace" font-size="14" fill="#0a0a0a">SSR · SEO</text>
+    </g>
+    <g transform="translate(560 0)">
+      <rect width="220" height="60" rx="30" fill="#0a0a0a"/>
+      <text x="110" y="38" text-anchor="middle" font-family="Space Grotesk, monospace" font-size="14" fill="#fafafa">Apollo GraphQL</text>
+    </g>
+    <g transform="translate(810 0)">
+      <rect width="190" height="60" rx="30" fill="#fff" stroke="#0a0a0a" stroke-width="2"/>
+      <text x="95" y="38" text-anchor="middle" font-family="Space Grotesk, monospace" font-size="14" fill="#0a0a0a">Next.js · TS</text>
+    </g>
+    <g transform="translate(1030 0)">
+      <rect width="170" height="60" rx="30" fill="#0a0a0a"/>
+      <text x="85" y="38" text-anchor="middle" font-family="Space Grotesk, monospace" font-size="14" fill="#fafafa">Jest tests</text>
+    </g>
+  </g>
+</svg>

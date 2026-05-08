@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="cb" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0a0a"/>
+      <stop offset="1" stop-color="#1a1410"/>
+    </linearGradient>
+    <linearGradient id="cline" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#F59E0B"/>
+      <stop offset="0.5" stop-color="#FCD34D"/>
+      <stop offset="1" stop-color="#F59E0B"/>
+    </linearGradient>
+    <radialGradient id="cglow" cx="0.6" cy="0.4" r="0.6">
+      <stop offset="0" stop-color="#F59E0B" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#F59E0B" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="cgrid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="#fff" stroke-opacity="0.04"/>
+    </pattern>
+  </defs>
+  <rect width="1440" height="900" fill="url(#cb)"/>
+  <rect width="1440" height="900" fill="url(#cgrid)"/>
+  <rect width="1440" height="900" fill="url(#cglow)"/>
+
+  <!-- Logo top-left -->
+  <g transform="translate(70 60)">
+    <rect width="36" height="36" rx="10" fill="#F59E0B"/>
+    <text x="46" y="26" font-family="Archivo, Inter, sans-serif" font-weight="800" font-size="22" fill="#fff">Capiwise</text>
+  </g>
+
+  <!-- Headline -->
+  <text x="70" y="220" font-family="Archivo, Inter, sans-serif" font-weight="800" font-size="72" fill="#ffffff" letter-spacing="-3">Real-time market</text>
+  <text x="70" y="300" font-family="Archivo, Inter, sans-serif" font-weight="800" font-size="72" fill="#F59E0B" letter-spacing="-3">intelligence.</text>
+  <text x="70" y="346" font-family="Space Grotesk, monospace" font-size="18" fill="#a1a1aa">Live portfolio tracking · interactive dashboards · clean architecture</text>
+
+  <!-- Mock chart card -->
+  <g transform="translate(70 420)">
+    <rect width="1300" height="380" rx="22" fill="#0d0d0d" stroke="#27272a" stroke-width="1"/>
+
+    <!-- header row -->
+    <text x="32" y="44" font-family="Space Grotesk, monospace" font-size="13" fill="#71717a" letter-spacing="3">PORTFOLIO · USD</text>
+    <text x="32" y="92" font-family="Archivo, Inter, sans-serif" font-weight="800" font-size="44" fill="#fff">$184,372.50</text>
+    <text x="32" y="120" font-family="Space Grotesk, monospace" font-size="14" fill="#22c55e">▲ +$3,184.20 (+1.74%) today</text>
+
+    <!-- range chips -->
+    <g transform="translate(900 28)" font-family="Space Grotesk, monospace" font-size="12" fill="#a1a1aa">
+      <rect width="44" height="26" rx="13" fill="#1a1a1a" stroke="#27272a"/>
+      <text x="22" y="17" text-anchor="middle">1D</text>
+      <g transform="translate(54 0)"><rect width="44" height="26" rx="13" fill="#F59E0B"/><text x="22" y="17" text-anchor="middle" fill="#0a0a0a" font-weight="700">1W</text></g>
+      <g transform="translate(108 0)"><rect width="44" height="26" rx="13" fill="#1a1a1a" stroke="#27272a"/><text x="22" y="17" text-anchor="middle">1M</text></g>
+      <g transform="translate(162 0)"><rect width="44" height="26" rx="13" fill="#1a1a1a" stroke="#27272a"/><text x="22" y="17" text-anchor="middle">3M</text></g>
+      <g transform="translate(216 0)"><rect width="44" height="26" rx="13" fill="#1a1a1a" stroke="#27272a"/><text x="22" y="17" text-anchor="middle">1Y</text></g>
+      <g transform="translate(270 0)"><rect width="44" height="26" rx="13" fill="#1a1a1a" stroke="#27272a"/><text x="22" y="17" text-anchor="middle">All</text></g>
+    </g>
+
+    <!-- gridlines -->
+    <g stroke="#1a1a1a" stroke-dasharray="4 6">
+      <line x1="32" y1="180" x2="1268" y2="180"/>
+      <line x1="32" y1="240" x2="1268" y2="240"/>
+      <line x1="32" y1="300" x2="1268" y2="300"/>
+    </g>
+
+    <!-- area path -->
+    <path d="M 32 290 L 130 270 L 220 250 L 320 268 L 420 240 L 520 230 L 620 218 L 720 222 L 820 200 L 920 178 L 1020 168 L 1120 152 L 1220 138 L 1268 130 L 1268 348 L 32 348 Z" fill="url(#cglow)" opacity="0.7"/>
+    <path d="M 32 290 L 130 270 L 220 250 L 320 268 L 420 240 L 520 230 L 620 218 L 720 222 L 820 200 L 920 178 L 1020 168 L 1120 152 L 1220 138 L 1268 130" fill="none" stroke="url(#cline)" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- highlight dot -->
+    <circle cx="1020" cy="168" r="6" fill="#F59E0B" stroke="#0a0a0a" stroke-width="3"/>
+  </g>
+</svg>
